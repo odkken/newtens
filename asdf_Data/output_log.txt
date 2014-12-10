@@ -1,0 +1,72 @@
+Initialize engine version: 4.6.0f3 (30840d631a27)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 670 (ID=0x1189)
+    Vendor:   NVIDIA
+    VRAM:     1990 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\JJ\Documents\networkTest\asdf_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\JJ\Documents\networkTest\asdf_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\JJ\Documents\networkTest\asdf_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\JJ\Documents\networkTest\asdf_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\JJ\Documents\networkTest\asdf_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\JJ\Documents\networkTest\asdf_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+- Completed reload, in  0.042 seconds
+<RI> Initializing input.
+<RI> Input initialized.
+desktop: 1920x1080 60Hz; virtual: 5440x1173 at -1600,0
+Platform assembly: C:\Users\JJ\Documents\networkTest\asdf_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\JJ\Documents\networkTest\asdf_Data\Managed\System.dll (this message is harmless)
+Requesting host list
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.NetworkUI:RefreshHostList() (at C:\Users\JJ\Documents\networkTest\Assets\Scripts\NetworkUI.cs:135)
+Assets.NetworkUI:Start() (at C:\Users\JJ\Documents\networkTest\Assets\Scripts\NetworkUI.cs:74)
+ 
+(Filename: C Line: 0)
+
+Received host list, gg
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.NetworkUI:OnMasterServerEvent(MasterServerEvent) (at C:\Users\JJ\Documents\networkTest\Assets\Scripts\NetworkUI.cs:143)
+ 
+(Filename: C Line: 0)
+
+Requesting host list
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.NetworkUI:RefreshHostList() (at C:\Users\JJ\Documents\networkTest\Assets\Scripts\NetworkUI.cs:135)
+Assets.<WaitForServersAndConnect>c__Iterator0:MoveNext() (at C:\Users\JJ\Documents\networkTest\Assets\Scripts\NetworkUI.cs:110)
+UnityEngine.MonoBehaviour:StartCoroutine_Auto(IEnumerator)
+UnityEngine.MonoBehaviour:StartCoroutine(IEnumerator) (at C:\BuildAgent\work\d63dfc6385190b60\artifacts\StandalonePlayerGenerated\UnityEngineMonoBehaviour.cs:62)
+Assets.NetworkUI:JoinRandom() (at C:\Users\JJ\Documents\networkTest\Assets\Scripts\NetworkUI.cs:104)
+UnityEngine.Events.InvokableCall:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:110)
+UnityEngine.Events.InvokableCallList:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:576)
+UnityEngine.Events.UnityEventBase:Invoke(Object[]) (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent.cs:718)
+UnityEngine.Events.UnityEvent:Invoke() (at C:\BuildAgent\work\d63dfc6385190b60\Runtime\Export\UnityEvent_0.cs:53)
+UnityEngine.UI.Button:Press() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:36)
+UnityEngine.UI.Button:OnPointerClick(PointerEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\UI\Core\Button.cs:45)
+UnityEngine.EventSystems.ExecuteEvents:Execute(IPointerClickHandler, BaseEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:52)
+UnityEngine.EventSystems.ExecuteEvents:Execute(GameObject, BaseEventData, EventFunction`1) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\ExecuteEvents.cs:269)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMousePress(MouseButtonEventData) (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:406)
+UnityEngine.EventSystems.StandaloneInputModule:ProcessMouseEvent() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:290)
+UnityEngine.EventSystems.StandaloneInputModule:Process() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\InputModules\StandaloneInputModule.cs:162)
+UnityEngine.EventSystems.EventSystem:Update() (at C:\BuildAgent\work\d63dfc6385190b60\Extensions\guisystem\guisystem\EventSystem\EventSystem.cs:261)
+ 
+(Filename: C Line: 0)
+
+Received host list, gg
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.NetworkUI:OnMasterServerEvent(MasterServerEvent) (at C:\Users\JJ\Documents\networkTest\Assets\Scripts\NetworkUI.cs:143)
+ 
+(Filename: C Line: 0)
+
+connecting to soup
+UnityEngine.Debug:Internal_Log(Int32, String, Object)
+UnityEngine.Debug:Log(Object)
+Assets.<WaitForServersAndConnect>c__Iterator0:MoveNext() (at C:\Users\JJ\Documents\networkTest\Assets\Scripts\NetworkUI.cs:121)
+ 
+(Filename: C Line: 0)
+

@@ -14,62 +14,63 @@ namespace Assets.Scripts
         private bool loading;
         private bool tryingToConnect = false;
         private string myIp;
+        public string GameName = "Tens";
 
-        void Awake()
-        {
-            var needToStartMasterServer = true;
-            foreach (var prs in Process.GetProcesses())
-            {
-                try
-                {
-                    if (!prs.HasExited && prs.ProcessName.Contains("MasterServer"))
-                        needToStartMasterServer = false;
-                }
-                catch
-                { }
-            }
-            if (needToStartMasterServer)
-            {
-                var startInfo =
-                    new ProcessStartInfo(
-                        @"C:\Users\JJ\Downloads\MasterServer-2.0.1f1\VisualStudio\Debug\MasterServer.exe")
-                    {
-                        WindowStyle = ProcessWindowStyle.Hidden
-                    };
-                Process.Start(startInfo);
-            }
-            var needToStartFacilitator = true;
-            foreach (var prs in Process.GetProcesses())
-            {
-                try
-                {
-                    if (!prs.HasExited && prs.ProcessName.Contains("Facilitator"))
-                        needToStartFacilitator = false;
-                }
-                catch
-                { }
-            }
-            if (needToStartFacilitator)
-            {
-                var startInfo =
-                    new ProcessStartInfo(
-                        @"C:\Users\JJ\Downloads\fac\VisualStudio\Debug\Facilitator.exe")
-                    {
-                        WindowStyle = ProcessWindowStyle.Hidden
-                    };
-                Process.Start(startInfo);
-            }
-        }
+        //void Awake()
+        //{
+        //    var needToStartMasterServer = true;
+        //    foreach (var prs in Process.GetProcesses())
+        //    {
+        //        try
+        //        {
+        //            if (!prs.HasExited && prs.ProcessName.Contains("MasterServer"))
+        //                needToStartMasterServer = false;
+        //        }
+        //        catch
+        //        { }
+        //    }
+        //    if (needToStartMasterServer)
+        //    {
+        //        var startInfo =
+        //            new ProcessStartInfo(
+        //                @"C:\Users\JJ\Downloads\MasterServer-2.0.1f1\VisualStudio\Debug\MasterServer.exe")
+        //            {
+        //                WindowStyle = ProcessWindowStyle.Hidden
+        //            };
+        //        Process.Start(startInfo);
+        //    }
+        //    var needToStartFacilitator = true;
+        //    foreach (var prs in Process.GetProcesses())
+        //    {
+        //        try
+        //        {
+        //            if (!prs.HasExited && prs.ProcessName.Contains("Facilitator"))
+        //                needToStartFacilitator = false;
+        //        }
+        //        catch
+        //        { }
+        //    }
+        //    if (needToStartFacilitator)
+        //    {
+        //        var startInfo =
+        //            new ProcessStartInfo(
+        //                @"C:\Users\JJ\Downloads\fac\VisualStudio\Debug\Facilitator.exe")
+        //            {
+        //                WindowStyle = ProcessWindowStyle.Hidden
+        //            };
+        //        Process.Start(startInfo);
+        //    }
+        //}
 
         // Use this for initialization
         void Start()
         {
-            myIp = Dns.GetHostAddresses(Dns.GetHostName()).First(a => a.AddressFamily == AddressFamily.InterNetwork).ToString();
+            //myIp = Dns.GetHostAddresses(Dns.GetHostName()).First(a => a.AddressFamily == AddressFamily.InterNetwork).ToString();
 
-            MasterServer.ipAddress = myIp;
-            MasterServer.port = 23466;
-            Network.natFacilitatorIP = myIp;
-            Network.natFacilitatorPort = 50005;
+            //MasterServer.ipAddress = myIp;
+            //MasterServer.port = 23466;
+            //Network.natFacilitatorIP = myIp;
+            //Network.natFacilitatorPort = 50005;
             RefreshHostList();
         }
 
@@ -130,7 +131,7 @@ namespace Assets.Scripts
         {
             loading = true;
             MasterServer.ClearHostList();
-            MasterServer.RequestHostList("soup");
+            MasterServer.RequestHostList(GameName);
             Debug.Log("Requesting host list");
         }
 

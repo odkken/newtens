@@ -15,8 +15,7 @@ namespace Assets.Scripts
         // Use this for initialization
         void Start()
         {
-            if (networkView.isMine)
-                InitializeDeck();
+        
         }
 
         // Update is called once per frame
@@ -25,7 +24,8 @@ namespace Assets.Scripts
 
         }
 
-        void InitializeDeck()
+       
+        public void InitializeDeck()
         {
             var randomBytes = new byte[32];
             RandomNumberGenerator.Create().GetBytes(randomBytes);
@@ -51,7 +51,9 @@ namespace Assets.Scripts
             var iz = 0;
             foreach (var card in cardNames)
             {
-                deck.Add((GameObject)Network.Instantiate(Resources.Load("GeneratedCards/" + card), Vector3.zero + new Vector3(0, 0, iz * .1f), Quaternion.identity, 0));
+                var cardPrefab = (GameObject)Resources.Load("GeneratedCards/" + card);
+                var cardObject = (GameObject)Instantiate(cardPrefab,new Vector3(0,0,cardPrefab.GetComponent<BoxCollider>().size.z*iz),Quaternion.identity);
+                deck.Add(cardObject);
                 iz++;
             }
 

@@ -12,6 +12,11 @@ namespace Assets.Scripts
             StartCoroutine(AnimateMove(newPos, .5f, false));
         }
 
+        public void TransitionUp()
+        {
+            TransitionOut(transform.position + Vector3.up * 1000);
+        }
+
         public void TransitionIn()
         {
             StartCoroutine(AnimateMove(Vector2.zero, .5f, true));

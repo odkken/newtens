@@ -10,8 +10,8 @@ namespace Assets.Scripts.Cards
     {
         public static void SetInfo(GameObject card, TensCommon.CardRank rank, TensCommon.CardSuit suit)
         {
-            card.GetComponent<CardInfo>().Rank = rank;
-            card.GetComponent<CardInfo>().Suit = suit;
+            card.GetComponent<Card>().Info.Rank = rank;
+            card.GetComponent<Card>().Info.Suit = suit;
             var rankChar = "";
             if ((int)rank < 9)
                 rankChar = ((int)rank + 2).ToString();

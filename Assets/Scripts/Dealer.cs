@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
+using Assets.Scripts.Cards;
 using Assets.Scripts.Common;
 using UnityEngine;
 using Util = Assets.Scripts.Cards.Util;
@@ -10,7 +11,7 @@ namespace Assets.Scripts
 {
     public class Dealer : MonoBehaviour
     {
-
+        public static bool GenerateCards = true;
         public List<GameObject> deck;
         // Use this for initialization
         void Start()
@@ -35,12 +36,12 @@ namespace Assets.Scripts
                 shuffleSeeds.Add(BitConverter.ToInt32(randomBytes, i));
             }
 
-            var cardNames = new List<string>();
+            var cardNames = new List<CardInfo>();
             foreach (TensCommon.CardSuit suit in Enum.GetValues(typeof(TensCommon.CardSuit)))
             {
                 foreach (TensCommon.CardRank rank in Enum.GetValues(typeof(TensCommon.CardRank)))
                 {
-                    cardNames.Add(rank + "of" + suit);
+                    cardNames.Add(new CardInfo { Rank = rank, Suit = suit });
                 }
             }
             foreach (var shuffleSeed in shuffleSeeds)
@@ -49,11 +50,22 @@ namespace Assets.Scripts
             }
 
             var iz = 0;
-            var tableSurfacePosition = GameObject.Find("TableSurface").transform.position;
+            var tableSurface = GameObject.Find("TableSurface");
             foreach (var card in cardNames)
             {
-                var cardPrefab = (GameObject)Resources.Load("GeneratedCards/" + card);
-                var cardObject = (GameObject)Instantiate(cardPrefab, new Vector3(tableSurfacePosition.x, tableSurfacePosition.y, tableSurfacePosition.z + cardPrefab.GetComponent<BoxCollider>().size.z * ((iz - cardNames.Count)) / 2), Quaternion.identity);
+                GameObject cardPrefab;
+                if (GenerateCards)
+                {
+                    cardPrefab = (GameObject)Resources.Load("Card");
+                    Util.SetInfo(cardPrefab, card.Rank, card.Suit);
+                }
+                else
+                {
+                    cardPrefab = (GameObject)Resources.Load("GeneratedCards/" + card);
+                }
+                var cardObject = (GameObject)Instantiate(cardPrefab, new Vector3(tableSurface.transform.position.x, tableSurface.transform.position.y, tableSurface.transform.position.z + cardPrefab.GetComponent<BoxCollider>().size.z * ((iz - cardNames.Count)) / 2), Quaternion.identity);
+                cardObject.transform.SetParent(tableSurface.transform);
+
                 deck.Add(cardObject);
                 iz++;
             }

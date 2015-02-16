@@ -54,11 +54,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\GameRules.cs" />
     <Compile Include="Assets\HostEntity.cs" />
     <Compile Include="Assets\Scripts\AvailableGame.cs" />
     <Compile Include="Assets\Scripts\BackButton.cs" />
     <Compile Include="Assets\Scripts\CanvasManager.cs" />
     <Compile Include="Assets\Scripts\CardInfo.cs" />
+    <Compile Include="Assets\Scripts\Cards\Card.cs" />
     <Compile Include="Assets\Scripts\Cards\Util.cs" />
     <Compile Include="Assets\Scripts\Common\Util.cs" />
     <Compile Include="Assets\Scripts\Dealer.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="Assets\Scripts\MovablePanel.cs" />
     <Compile Include="Assets\Scripts\NetworkUI.cs" />
     <Compile Include="Assets\Scripts\PanelManager.cs" />
+    <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\TensCommon.cs" />
     <Compile Include="Assets\Scripts\TwoPlayerTable.cs" />
   </ItemGroup>

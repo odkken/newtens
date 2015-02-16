@@ -7,17 +7,17 @@ namespace Assets.Scripts.Common
 {
     public static class Util
     {
-        private static System.Random rand;
+        private static System.Random _rand;
 
         public static void Shuffle<T>(this IList<T> list, int seed)
         {
             var rng = new System.Random(seed);
-            int n = list.Count;
+            var n = list.Count;
             while (n > 1)
             {
                 n--;
-                int k = rng.Next(n + 1);
-                T value = list[k];
+                var k = rng.Next(n + 1);
+                var value = list[k];
                 list[k] = list[n];
                 list[n] = value;
             }
@@ -49,10 +49,10 @@ namespace Assets.Scripts.Common
 
         public static float NextGaussian(float stdDev, float mean = 0)
         {
-            if (rand == null)
-                rand = new System.Random(); //reuse this if you are generating many
-            double u1 = rand.NextDouble(); //these are uniform(0,1) random doubles
-            double u2 = rand.NextDouble();
+            if (_rand == null)
+                _rand = new System.Random(); //reuse this if you are generating many
+            double u1 = _rand.NextDouble(); //these are uniform(0,1) random doubles
+            double u2 = _rand.NextDouble();
             double randStdNormal = Math.Sqrt(-2.0 * Math.Log(u1)) *
                          Math.Sin(2.0 * Math.PI * u2); //random normal(0,1)
             double randNormal =

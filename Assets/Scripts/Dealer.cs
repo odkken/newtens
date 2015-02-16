@@ -13,10 +13,13 @@ namespace Assets.Scripts
     {
         public static bool GenerateCards = true;
         public List<GameObject> deck;
+
+        private GameRules _gameRules;
+
         // Use this for initialization
         void Start()
         {
-
+            _gameRules = FindObjectOfType<GameRules>();
         }
 
         // Update is called once per frame
@@ -25,6 +28,39 @@ namespace Assets.Scripts
 
         }
 
+        public void Deal()
+        {
+            switch (_gameRules.ThisGameNumPlayers)
+            {
+                case GameRules.NumPlayers.Two:
+                    DealTwoPlayer();
+                    break;
+                case GameRules.NumPlayers.Four:
+                    DealFourPlayer();
+                    break;
+            }
+        }
+
+        private void DealTwoPlayer()
+        {
+            var dealToIndex = _gameRules.BidHolder.Index;
+            while (deck.Any())
+            {
+                _gameRules.GetPlayerByIndex(dealToIndex).GiveCard(GetTopCard());
+                //alternates between 1 and 0
+                dealToIndex = 1 - dealToIndex;
+            }
+        }
+
+        private GameObject GetTopCard()
+        {
+            return deck.Pop();
+        }
+
+        private void DealFourPlayer()
+        {
+
+        }
 
         public void InitializeDeck()
         {

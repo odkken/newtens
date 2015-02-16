@@ -9,6 +9,14 @@ namespace Assets.Scripts
     public class Player : MonoBehaviour
     {
 
+        public enum Position
+        {
+            North,
+            South,
+            East,
+            West
+        }
+
 
         public List<Card> Cards;
 
@@ -21,6 +29,15 @@ namespace Assets.Scripts
             _gameRules = FindObjectOfType<GameRules>();
         }
 
+
+        public Position TablePosition { get; private set; }
+
+        public void Initialize(int index, Position pos)
+        {
+            Index = index;
+            TablePosition = pos;
+        }
+
         // Update is called once per frame
         void Update()
         {
@@ -29,8 +46,9 @@ namespace Assets.Scripts
 
 
 
-        public void GiveCard(Card card)
+        public void GiveCard(GameObject cardObject)
         {
+            var card = cardObject.GetComponent<Card>();
             switch (_gameRules.ThisGameNumPlayers)
             {
                 case GameRules.NumPlayers.Two:
@@ -62,25 +80,14 @@ namespace Assets.Scripts
                         throw new Exception("Not enough room for another card!");
                     }
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
             }
+            cardObject.transform.position = _gameRules.PositionLookup(TablePosition);
         }
-
-
-
-
-
-
 
 
 
         private int GetNextEmptyPosition()
         {
-            switch (hideFlags)
-            {
-
-            }
             return 0;
         }
     }

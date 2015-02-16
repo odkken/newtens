@@ -15,7 +15,7 @@ namespace Assets.Scripts
         // Use this for initialization
         void Start()
         {
-        
+
         }
 
         // Update is called once per frame
@@ -24,7 +24,7 @@ namespace Assets.Scripts
 
         }
 
-       
+
         public void InitializeDeck()
         {
             var randomBytes = new byte[32];
@@ -49,10 +49,11 @@ namespace Assets.Scripts
             }
 
             var iz = 0;
+            var tableSurfacePosition = GameObject.Find("TableSurface").transform.position;
             foreach (var card in cardNames)
             {
                 var cardPrefab = (GameObject)Resources.Load("GeneratedCards/" + card);
-                var cardObject = (GameObject)Instantiate(cardPrefab,new Vector3(0,0,cardPrefab.GetComponent<BoxCollider>().size.z*iz),Quaternion.identity);
+                var cardObject = (GameObject)Instantiate(cardPrefab, new Vector3(tableSurfacePosition.x, tableSurfacePosition.y, tableSurfacePosition.z + cardPrefab.GetComponent<BoxCollider>().size.z * ((iz - cardNames.Count)) / 2), Quaternion.identity);
                 deck.Add(cardObject);
                 iz++;
             }

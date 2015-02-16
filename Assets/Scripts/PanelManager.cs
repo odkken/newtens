@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    public class PanelManager : Singleton<PanelManager>
+    public class PanelManager : MonoBehaviour
     {
         public static readonly Vector2 OffScreenLeftPos = new Vector2(-2000, 0);
         public static readonly Vector2 OffScreenRightPos = -OffScreenLeftPos;
@@ -15,10 +15,22 @@ namespace Assets.Scripts
         public readonly Stack<MovablePanel> PanelStack = new Stack<MovablePanel>();
 
 
-        void Start()
+        private void Start()
         {
             GameObject.Find("MainMenuPanel").GetComponent<MovablePanel>().ShowMe();
         }
+
+        public static PanelManager Instance
+        {
+            get
+            {
+                var panelManagers = FindObjectsOfType<PanelManager>();
+                if (panelManagers.Count() > 1)
+                    Debug.Log("dafuq, too many panel managers");
+                return panelManagers[0];
+            }
+        }
+
 
         public void GoToPanel(MovablePanel panel)
         {

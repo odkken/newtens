@@ -4,7 +4,7 @@ using Assets.Scripts.Common;
 
 namespace Assets.Scripts
 {
-    public class IPGetter : Singleton<IPGetter>
+    public class IPGetter
     {
         protected IPGetter()
         {

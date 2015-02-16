@@ -137,13 +137,14 @@ namespace Assets.Scripts
 
         void OnMasterServerEvent(MasterServerEvent msevent)
         {
-            if (msevent == MasterServerEvent.HostListReceived)
+            switch (msevent)
             {
-                // received the host list, no longer awaiting results
-                Debug.Log("Received host list, gg");
-                loading = false;
+                case MasterServerEvent.HostListReceived:
+                    // received the host list, no longer awaiting results
+                    Debug.Log("Received host list, gg");
+                    loading = false;
+                    break;
             }
         }
-
     }
 }

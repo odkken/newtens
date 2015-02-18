@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Cards
@@ -34,7 +37,11 @@ namespace Assets.Scripts.Cards
         // Update is called once per frame
         void Update()
         {
-
+            if (!Moving && movementQueue.Any())
+            {
+                var moveInfo = movementQueue.Dequeue();
+                StartCoroutine(AnimateMove(moveInfo.Key, moveInfo.Value));
+            }
         }
 
         public bool CanBeAdvanced
@@ -109,6 +116,33 @@ namespace Assets.Scripts.Cards
                     throw new ArgumentOutOfRangeException();
             }
         }
+
+
+
+        #region movement
+        public bool Moving { get; private set; }
+        public void MoveTo(Vector3 to)
+        {
+            movementQueue.Enqueue(new KeyValuePair<Vector3, float>(to, .2f));
+        }
+
+        private Queue<KeyValuePair<Vector3, float>> movementQueue = new Queue<KeyValuePair<Vector3, float>>();
+
+        IEnumerator AnimateMove(Vector3 newPosition, float flipTime)
+        {
+            Moving = true;
+            var startPos = transform.position;
+            var time = 0f;
+            while (time < 1)
+            {
+                time += Time.deltaTime / flipTime;
+                transform.position = Vector3.Lerp(startPos, newPosition, Mathf.Log10(time * 9 + 1));
+                yield return null;
+            }
+            transform.position = newPosition;
+            Moving = false;
+        }
+        #endregion
 
 
     }

@@ -65,5 +65,28 @@ namespace Assets.Scripts.Common
             return Mathf.Pow((1 - t), 3) * p0 + 3 * Mathf.Pow((1 - t), 2) * t * p1 + 3 * (1 - t) * t * t * p2 + t * t * t * p3;
         }
 
+        public static Vector3 RelativeUp(Player.Position position)
+        {
+            var right = RelativeRight(position);
+            return new Vector3(-right.y, right.x, 0);
+        }
+
+        public static Vector3 RelativeRight(Player.Position position)
+        {
+            switch (position)
+            {
+                case Player.Position.North:
+                    return Vector3.left;
+                case Player.Position.South:
+                    return Vector3.right;
+                case Player.Position.East:
+                    return Vector3.up;
+                case Player.Position.West:
+                    return Vector3.down;
+                default:
+                    throw new ArgumentOutOfRangeException("position");
+            }
+        }
+
     }
 }

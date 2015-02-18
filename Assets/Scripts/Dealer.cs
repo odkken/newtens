@@ -52,15 +52,23 @@ namespace Assets.Scripts
             }
         }
 
+        private void DealFourPlayer()
+        {
+            var dealToIndex = _gameRules.BidHolder.Index;
+            while (deck.Any())
+            {
+                _gameRules.GetPlayerByIndex(dealToIndex).GiveCard(GetTopCard());
+                dealToIndex++;
+                if (dealToIndex == 4)
+                    dealToIndex = 0;
+
+            }
+        }
         private GameObject GetTopCard()
         {
             return deck.Pop();
         }
 
-        private void DealFourPlayer()
-        {
-
-        }
 
         public void InitializeDeck()
         {

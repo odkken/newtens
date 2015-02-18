@@ -54,6 +54,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\BidButton.cs" />
     <Compile Include="Assets\GameRules.cs" />
     <Compile Include="Assets\HostEntity.cs" />
     <Compile Include="Assets\Scripts\AvailableGame.cs" />

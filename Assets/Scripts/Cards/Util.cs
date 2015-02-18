@@ -13,26 +13,29 @@ namespace Assets.Scripts.Cards
             card.GetComponent<Card>().Info.Rank = rank;
             card.GetComponent<Card>().Info.Suit = suit;
             var rankChar = "";
-            if ((int)rank < 9)
-                rankChar = ((int)rank + 2).ToString();
+            if ((int)rank < 11)
+                rankChar = ((int)rank).ToString();
             else
             {
                 switch ((int)rank)
                 {
-                    case 9:
+                    case 11:
                         rankChar = "J";
                         break;
-                    case 10:
+                    case 12:
                         rankChar = "Q";
                         break;
-                    case 11:
+                    case 13:
                         rankChar = "K";
                         break;
-                    case 12:
+                    case 14:
                         rankChar = "A";
                         break;
                 }
             }
+
+            if (rankChar == "")
+                Debug.Log(rank + "," + (int)rank);
 
             var cardString = "card" + suit + rankChar;
             var frontSprite = Resources.Load<Sprite>("CardTextures/" + cardString);

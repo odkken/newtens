@@ -94,7 +94,7 @@ namespace Assets
 
         public Vector3 PositionLookup(Player.Position position)
         {
-            const float magnitude = 4.5f;
+            const float magnitude = 4f;
 
             switch (position)
             {

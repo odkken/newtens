@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Assets.Scripts.Cards;
 using Assets.Scripts.Common;
+using Assets.Scripts.Game;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -52,7 +53,7 @@ namespace Assets.Scripts
         public void GiveCard(GameObject cardObject)
         {
             var card = cardObject.GetComponent<Card>();
-            switch (_gameRules.ThisGameNumPlayers)
+            switch (_gameRules.CurrentNumPlayers)
             {
                 case GameRules.NumPlayers.Two:
                     if (Cards.Count(a => a.CurrentState == Card.PlayState.FaceDownOnTable) < 5)

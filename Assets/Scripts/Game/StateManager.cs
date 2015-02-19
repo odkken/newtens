@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Game
 {
-    public class GameStateManager : MonoBehaviour
+    public class StateManager : MonoBehaviour
     {
         public Dealer Dealer;
 
@@ -50,26 +50,7 @@ namespace Assets.Scripts
         {
             Debug.Log("GameStarted");
             Dealer.InitializeDeck();
-
-            var playerPrefab = (GameObject)Resources.Load("Player");
-
-            switch (GetComponent<GameRules>().ThisGameNumPlayers)
-            {
-                case GameRules.NumPlayers.Two:
-                    var playerZero = (GameObject)Instantiate(playerPrefab);
-                    gameRules.SeatPlayer(playerZero.GetComponent<Player>());
-                    var playerOne = (GameObject)Instantiate(playerPrefab);
-                    gameRules.SeatPlayer(playerOne.GetComponent<Player>());
-                    break;
-                case GameRules.NumPlayers.Four:
-                    for (var i = 0; i < 4; i++)
-                    {
-                        var player = (GameObject)Instantiate(playerPrefab);
-                        gameRules.SeatPlayer(player.GetComponent<Player>());
-                    }
-                    break;
-            }
-
+            gameRules.StartNewRound();
         }
     }
 }

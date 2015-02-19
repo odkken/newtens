@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Assets.Scripts;
-using UnityEngine;
 using System.Linq;
-namespace Assets
+using UnityEngine;
+
+namespace Assets.Scripts.Game
 {
     public class GameRules : MonoBehaviour
     {
@@ -16,21 +16,47 @@ namespace Assets
         }
 
 
-        public NumPlayers ThisGameNumPlayers { get; private set; }
+        public NumPlayers CurrentNumPlayers { get; private set; }
+        public Round CurrentRound { get; private set; }
 
-        private GameStateManager gameState;
+
+        private StateManager state;
         public bool IsGameInitialized
         {
             get
             {
-                return gameState.CurrentGameState != GameStateManager.GameState.Uninitialized;
+                return state.CurrentGameState != StateManager.GameState.Uninitialized;
             }
         }
+
+        public void StartNewRound()
+        {
+            var playerPrefab = (GameObject)Resources.Load("Player");
+            CurrentRound = new Round();
+            switch (CurrentNumPlayers)
+            {
+                case GameRules.NumPlayers.Two:
+                    var playerZero = (GameObject)Instantiate(playerPrefab);
+                    SeatPlayer(playerZero.GetComponent<Player>());
+                    var playerOne = (GameObject)Instantiate(playerPrefab);
+                    SeatPlayer(playerOne.GetComponent<Player>());
+                    break;
+                case GameRules.NumPlayers.Four:
+                    for (var i = 0; i < 4; i++)
+                    {
+                        var player = (GameObject)Instantiate(playerPrefab);
+                        SeatPlayer(player.GetComponent<Player>());
+                    }
+                    break;
+            }
+            state.CurrentGameState = StateManager.GameState.Initialized;
+        }
+
 
         public void SetTwoPlayer()
         {
             if (!IsGameInitialized)
-                ThisGameNumPlayers = NumPlayers.Two;
+                CurrentNumPlayers = NumPlayers.Two;
             else
             {
                 throw new Exception("Can't change number of players while game is in progress!");
@@ -40,7 +66,7 @@ namespace Assets
         public void SetFourPlayer()
         {
             if (!IsGameInitialized)
-                ThisGameNumPlayers = NumPlayers.Four;
+                CurrentNumPlayers = NumPlayers.Four;
             else
             {
                 throw new Exception("Can't change number of players while game is in progress!");
@@ -61,7 +87,7 @@ namespace Assets
 
         public void SeatPlayer(Player player)
         {
-            switch (ThisGameNumPlayers)
+            switch (CurrentNumPlayers)
             {
                 case NumPlayers.Two:
                     if (!players.Any())
@@ -117,7 +143,7 @@ namespace Assets
         void Start()
         {
             tableSurface = GameObject.Find("TableSurface");
-            gameState = GetComponent<GameStateManager>();
+            state = GetComponent<StateManager>();
         }
 
         // Update is called once per frame

@@ -47,7 +47,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\BidButton.cs" />
-     <Compile Include="Assets\GameRules.cs" />
      <Compile Include="Assets\HostEntity.cs" />
      <Compile Include="Assets\Scripts\AvailableGame.cs" />
      <Compile Include="Assets\Scripts\BackButton.cs" />
@@ -57,7 +56,10 @@
      <Compile Include="Assets\Scripts\Cards\Util.cs" />
      <Compile Include="Assets\Scripts\Common\Util.cs" />
      <Compile Include="Assets\Scripts\Dealer.cs" />
-     <Compile Include="Assets\Scripts\GameStateManager.cs" />
+     <Compile Include="Assets\Scripts\Game\BidInfo.cs" />
+     <Compile Include="Assets\Scripts\Game\GameRules.cs" />
+     <Compile Include="Assets\Scripts\Game\Round.cs" />
+     <Compile Include="Assets\Scripts\Game\StateManager.cs" />
      <Compile Include="Assets\Scripts\IPGetter.cs" />
      <Compile Include="Assets\Scripts\ListExpander.cs" />
      <Compile Include="Assets\Scripts\MovablePanel.cs" />

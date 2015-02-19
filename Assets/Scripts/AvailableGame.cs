@@ -1,8 +1,7 @@
-﻿using Assets.Scripts;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets
+namespace Assets.Scripts
 {
     public class AvailableGame : MonoBehaviour
     {

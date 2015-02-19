@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using Assets.Scripts.Cards;
 using Assets.Scripts.Common;
+using Assets.Scripts.Game;
 using UnityEngine;
 using Util = Assets.Scripts.Cards.Util;
 
@@ -20,6 +21,7 @@ namespace Assets.Scripts
         void Start()
         {
             _gameRules = FindObjectOfType<GameRules>();
+            var panel = GameObject.FindGameObjectWithTag("BidPanel");
         }
 
         // Update is called once per frame
@@ -30,7 +32,7 @@ namespace Assets.Scripts
 
         public void Deal()
         {
-            switch (_gameRules.ThisGameNumPlayers)
+            switch (_gameRules.CurrentNumPlayers)
             {
                 case GameRules.NumPlayers.Two:
                     DealTwoPlayer();

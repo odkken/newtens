@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Assets
+namespace Assets.Scripts
 {
     [ExecuteInEditMode]
     public class ListExpander : MonoBehaviour

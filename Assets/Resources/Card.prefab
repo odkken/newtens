@@ -112,8 +112,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
-    Rank: 12
-    Suit: 0
+    Rank: 5
+    Suit: 2
 --- !u!148 &14800000
 NetworkView:
   m_ObjectHideFlags: 1
@@ -168,7 +168,7 @@ SpriteRenderer:
   m_ScaleInLightmap: 1
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7d6bf8ac50362bd47a28ecdaf2eb1cad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f2fc9909ae018364ca0bc77640f3fef4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

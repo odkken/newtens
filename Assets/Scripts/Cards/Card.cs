@@ -57,7 +57,7 @@ namespace Assets.Scripts.Cards
 
         void OnMouseDown()
         {
-            if (networkView.isMine && CanBeAdvanced)
+            if (GetComponent<NetworkView>().isMine && CanBeAdvanced)
                 AdvanceState();
         }
 

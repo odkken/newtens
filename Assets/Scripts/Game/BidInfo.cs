@@ -3,6 +3,6 @@
     public class BidInfo
     {
         public Player Holder;
-        public int Amount;
+        public int Amount = 0;
     }
 }

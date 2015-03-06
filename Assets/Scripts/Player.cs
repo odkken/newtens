@@ -21,7 +21,6 @@ namespace Assets.Scripts
             West
         }
 
-
         public List<Card> Cards;
 
         public int Index { get; private set; }
@@ -34,12 +33,12 @@ namespace Assets.Scripts
         }
 
 
-        public Position TablePosition { get; private set; }
+        public Position SeatPosition { get; private set; }
 
         public void Initialize(int index, Position pos)
         {
             Index = index;
-            TablePosition = pos;
+            SeatPosition = pos;
         }
 
         // Update is called once per frame
@@ -59,19 +58,19 @@ namespace Assets.Scripts
                     if (Cards.Count(a => a.CurrentState == Card.PlayState.FaceDownOnTable) < 5)
                     {
                         card.Take(Index, Card.PlayState.FaceDownOnTable);
-                        card.MoveTo(_gameRules.PositionLookup(TablePosition) + Common.Util.RelativeRight(TablePosition) * HorizontalTableSpacing * (Cards.Count(a => a.CurrentState == Card.PlayState.FaceDownOnTable) - 2));
+                        card.MoveTo(_gameRules.Table.RowPosition(SeatPosition) + Common.Util.RelativeRight(SeatPosition) * HorizontalTableSpacing * (Cards.Count(a => a.CurrentState == Card.PlayState.FaceDownOnTable) - 2));
 
                     }
                     else if (Cards.Count(a => a.CurrentState == Card.PlayState.FaceUpOnTable) < 5)
                     {
                         card.Take(Index, Card.PlayState.FaceUpOnTable);
-                        card.MoveTo(_gameRules.PositionLookup(TablePosition) + Common.Util.RelativeRight(TablePosition) * HorizontalTableSpacing * (Cards.Count(a => a.CurrentState == Card.PlayState.FaceUpOnTable) - 2));
+                        card.MoveTo(_gameRules.Table.RowPosition(SeatPosition) + Common.Util.RelativeRight(SeatPosition) * HorizontalTableSpacing * (Cards.Count(a => a.CurrentState == Card.PlayState.FaceUpOnTable) - 2));
                         card.transform.Rotate(Vector3.up, 180);
                     }
                     else if (Cards.Count(a => a.CurrentState == Card.PlayState.InHand) < 10)
                     {
                         card.Take(Index, Card.PlayState.InHand);
-                        card.MoveTo(_gameRules.PositionLookup(TablePosition) - Common.Util.RelativeRight(TablePosition) * HorizontalHandSpacing * (Cards.Count(a => a.CurrentState == Card.PlayState.InHand) - 4.5f) - 2 * Common.Util.RelativeUp(TablePosition));
+                        card.MoveTo(_gameRules.PositionLookup(SeatPosition) - Common.Util.RelativeRight(SeatPosition) * HorizontalHandSpacing * (Cards.Count(a => a.CurrentState == Card.PlayState.InHand) - 4.5f) - 2 * Common.Util.RelativeForward(SeatPosition));
                         card.transform.Rotate(Vector3.up, 180);
                     }
                     else
@@ -84,7 +83,7 @@ namespace Assets.Scripts
                     if (Cards.Count(a => a.CurrentState == Card.PlayState.InHand) < 10)
                     {
                         card.Take(Index, Card.PlayState.InHand);
-                        card.MoveTo(_gameRules.PositionLookup(TablePosition) - Common.Util.RelativeRight(TablePosition) * HorizontalHandSpacing * (Cards.Count(a => a.CurrentState == Card.PlayState.InHand) - 4.5f) - 2 * Common.Util.RelativeUp(TablePosition));
+                        card.MoveTo(_gameRules.PositionLookup(SeatPosition) - Common.Util.RelativeRight(SeatPosition) * HorizontalHandSpacing * (Cards.Count(a => a.CurrentState == Card.PlayState.InHand) - 4.5f) - 2 * Common.Util.RelativeForward(SeatPosition));
                         card.transform.Rotate(Vector3.up, 180);
                     }
                     else
@@ -123,16 +122,16 @@ namespace Assets.Scripts
 
                 Cards.RemoveAll(a => a.CurrentState == Card.PlayState.InHand);
                 Cards.AddRange(handCards);
-                var cardThickness = cardObject.GetComponent<BoxCollider>().size.z;
+                var cardThickness = cardObject.GetComponentInChildren<BoxCollider>().size.z;
                 for (int i = 0; i < 10; i++)
                 {
                     var cardToMove = handCards[i];
-                    var destinationPos = (_gameRules.PositionLookup(TablePosition) -
-                                          Common.Util.RelativeRight(TablePosition) * HorizontalHandSpacing * (i - 4.5f) -
-                                          2.2f * Common.Util.RelativeUp(TablePosition));
-                    destinationPos.z = _gameRules.PositionLookup(TablePosition).z + cardThickness * (i);
+                    var destinationPos = (_gameRules.PositionLookup(SeatPosition) -
+                                          Common.Util.RelativeRight(SeatPosition) * HorizontalHandSpacing * (i - 4.5f) -
+                                          2.2f * Common.Util.RelativeForward(SeatPosition));
+                    destinationPos.z = _gameRules.PositionLookup(SeatPosition).z + cardThickness * (i);
                     cardToMove.MoveTo(destinationPos);
-                    cardToMove.transform.rotation = Quaternion.LookRotation(Vector3.back, Common.Util.RelativeUp(TablePosition));
+                    cardToMove.transform.rotation = Quaternion.LookRotation(Vector3.back, Common.Util.RelativeForward(SeatPosition));
                 }
             }
         }

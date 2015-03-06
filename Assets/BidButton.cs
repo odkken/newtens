@@ -1,10 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using Assets.Scripts.Game;
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace Assets
 {
     public class BidButton : MonoBehaviour
     {
+        private GameRules gameRules;
         private int amount;
         public int Amount
         {
@@ -18,16 +21,16 @@ namespace Assets
                 decreaseButton.interactable = Amount != MinBidAmount;
             }
         }
-        private int MinBidAmount;
+        private int MinBidAmount { get { return Math.Max(50, gameRules.CurrentRound.CurrentBid.Amount + 5); } }
         private Button increaseButton;
         private Button decreaseButton;
         // Use this for initialization
         void Start()
         {
-            MinBidAmount = 50;
+            gameRules = FindObjectOfType<GameRules>();
             increaseButton = GameObject.Find("IncreaseBidButton").GetComponent<Button>();
             decreaseButton = GameObject.Find("DecreaseBidButton").GetComponent<Button>();
-            Amount = 50;
+            Amount = MinBidAmount;
         }
 
         // Update is called once per frame
@@ -50,6 +53,12 @@ namespace Assets
             {
                 Amount -= 5;
             }
+        }
+
+        public void EnterBid()
+        {
+            gameRules.SetNewBid(Amount);
+            Amount = MinBidAmount;
         }
     }
 }

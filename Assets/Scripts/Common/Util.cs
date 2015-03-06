@@ -65,7 +65,7 @@ namespace Assets.Scripts.Common
             return Mathf.Pow((1 - t), 3) * p0 + 3 * Mathf.Pow((1 - t), 2) * t * p1 + 3 * (1 - t) * t * t * p2 + t * t * t * p3;
         }
 
-        public static Vector3 RelativeUp(Player.Position position)
+        public static Vector3 RelativeForward(Player.Position position)
         {
             var right = RelativeRight(position);
             return new Vector3(-right.y, right.x, 0);

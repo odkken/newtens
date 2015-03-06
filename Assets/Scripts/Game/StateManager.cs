@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Assets.Scripts.Game
 {
@@ -33,12 +34,30 @@ namespace Assets.Scripts.Game
 
         }
 
-        public GameState CurrentGameState = GameState.Uninitialized;
-
+        private GameState currentGameState = GameState.Uninitialized;
+        public GameState CurrentGameState { get { return currentGameState; } }
         // Use this for initialization
         void Start()
         {
             gameRules = GetComponent<GameRules>();
+        }
+
+
+        public void SetGameState(GameState newState)
+        {
+            switch (newState)
+            {
+                case GameState.Uninitialized:
+                    break;
+                case GameState.Initialized:
+                    break;
+                case GameState.Bidding:
+                    break;
+                case GameState.Playing:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("newState");
+            }
         }
 
         // Update is called once per frame
@@ -49,8 +68,8 @@ namespace Assets.Scripts.Game
         public void StartGame()
         {
             Debug.Log("GameStarted");
-            Dealer.InitializeDeck();
             gameRules.StartNewRound();
+            Dealer.InitializeDeck();
         }
     }
 }

@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using Assets.Scripts.Cards;
 using Assets.Scripts.Common;
 using Assets.Scripts.Game;
+using UnityEditor;
 using UnityEngine;
 using Util = Assets.Scripts.Cards.Util;
 
@@ -15,13 +16,14 @@ namespace Assets.Scripts
         public static bool GenerateCards = true;
         public List<GameObject> deck;
 
+
+        public GameObject bidPanel;
         private GameRules _gameRules;
 
         // Use this for initialization
         void Start()
         {
             _gameRules = FindObjectOfType<GameRules>();
-            var panel = GameObject.FindGameObjectWithTag("BidPanel");
         }
 
         // Update is called once per frame
@@ -32,40 +34,15 @@ namespace Assets.Scripts
 
         public void Deal()
         {
-            switch (_gameRules.CurrentNumPlayers)
-            {
-                case GameRules.NumPlayers.Two:
-                    DealTwoPlayer();
-                    break;
-                case GameRules.NumPlayers.Four:
-                    DealFourPlayer();
-                    break;
-            }
-        }
-
-        private void DealTwoPlayer()
-        {
-            var dealToIndex = _gameRules.BidHolder.Index;
+            var playerToDealTo = _gameRules.CurrentRound.PlayerToStartDealOn;
             while (deck.Any())
             {
-                _gameRules.GetPlayerByIndex(dealToIndex).GiveCard(GetTopCard());
-                //alternates between 1 and 0
-                dealToIndex = 1 - dealToIndex;
+                playerToDealTo.GiveCard(GetTopCard());
+                playerToDealTo = _gameRules.GetNextPlayer(playerToDealTo);
             }
+            bidPanel.SetActive(true);
         }
 
-        private void DealFourPlayer()
-        {
-            var dealToIndex = _gameRules.BidHolder.Index;
-            while (deck.Any())
-            {
-                _gameRules.GetPlayerByIndex(dealToIndex).GiveCard(GetTopCard());
-                dealToIndex++;
-                if (dealToIndex == 4)
-                    dealToIndex = 0;
-
-            }
-        }
         private GameObject GetTopCard()
         {
             return deck.Pop();
@@ -96,7 +73,6 @@ namespace Assets.Scripts
             }
 
             var iz = 0;
-            var tableSurface = GameObject.Find("TableSurface");
             foreach (var card in cardNames)
             {
                 GameObject cardPrefab;
@@ -109,8 +85,13 @@ namespace Assets.Scripts
                 {
                     cardPrefab = (GameObject)Resources.Load("GeneratedCards/" + card);
                 }
-                var cardObject = (GameObject)Instantiate(cardPrefab, new Vector3(tableSurface.transform.position.x, tableSurface.transform.position.y, tableSurface.transform.position.z + cardPrefab.GetComponent<BoxCollider>().size.z * ((iz - cardNames.Count)) / 2), Quaternion.identity);
-                cardObject.transform.SetParent(tableSurface.transform);
+
+
+                var soap = cardPrefab.transform.FindChild("Soap");
+                var collider = soap.GetComponent<BoxCollider>();
+                var cardThickness = collider.size.z / 2;
+                var cardObject = (GameObject)Instantiate(cardPrefab, _gameRules.Table.PlayPosition + new Vector3(0, cardThickness * (cardNames.Count - iz), 0), Quaternion.LookRotation(Vector3.down, Vector3.forward));
+                //cardObject.transform.SetParent(tableSurface.transform);
 
                 deck.Add(cardObject);
                 iz++;

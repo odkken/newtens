@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Assets.Scripts.Common;
 using UnityEngine;
 
 namespace Assets.Scripts.Game
@@ -15,10 +16,11 @@ namespace Assets.Scripts.Game
             Four
         }
 
+        public Table Table;
 
         public NumPlayers CurrentNumPlayers { get; private set; }
         public Round CurrentRound { get; private set; }
-
+        private List<Round> allRounds = new List<Round>();
 
         private StateManager state;
         public bool IsGameInitialized
@@ -29,10 +31,14 @@ namespace Assets.Scripts.Game
             }
         }
 
+        public Player GetFirstPlayer()
+        {
+            return players[0];
+        }
+
         public void StartNewRound()
         {
             var playerPrefab = (GameObject)Resources.Load("Player");
-            CurrentRound = new Round();
             switch (CurrentNumPlayers)
             {
                 case GameRules.NumPlayers.Two:
@@ -49,7 +55,10 @@ namespace Assets.Scripts.Game
                     }
                     break;
             }
-            state.CurrentGameState = StateManager.GameState.Initialized;
+            state.SetGameState(StateManager.GameState.Initialized);
+            CurrentRound = new Round(this, GetPlayerToStartDealOn(allRounds.Count), allRounds.Count);
+            allRounds.Add(CurrentRound);
+            CurrentBidder = GetPlayerToStartDealOn(CurrentRound.Number);
         }
 
 
@@ -73,8 +82,8 @@ namespace Assets.Scripts.Game
             }
         }
 
-        public Player BidHolder { get { return players[0]; } }
-
+        public Player CurrentBidder { get; private set; }
+        public Player BidHolder { get { return CurrentRound.CurrentBid.Holder; } }
 
         private List<Player> players = new List<Player>();
 
@@ -83,7 +92,6 @@ namespace Assets.Scripts.Game
             return players.Single(a => a.Index == index);
         }
 
-        private GameObject tableSurface;
 
         public void SeatPlayer(Player player)
         {
@@ -114,7 +122,7 @@ namespace Assets.Scripts.Game
                     break;
             }
 
-            player.transform.position = PositionLookup(player.TablePosition);
+            player.transform.position = PositionLookup(player.SeatPosition);
             players.Add(player);
         }
 
@@ -124,14 +132,14 @@ namespace Assets.Scripts.Game
 
             switch (position)
             {
-                case Player.Position.North:
-                    return tableSurface.transform.position + Vector3.up * magnitude;
-                case Player.Position.South:
-                    return tableSurface.transform.position - Vector3.up * magnitude;
-                case Player.Position.East:
-                    return tableSurface.transform.position + Vector3.right * magnitude;
-                case Player.Position.West:
-                    return tableSurface.transform.position - Vector3.right * magnitude;
+                //case Player.Position.North:
+                //    return tableSurface.transform.position + Vector3.up * magnitude;
+                //case Player.Position.South:
+                //    return tableSurface.transform.position - Vector3.up * magnitude;
+                //case Player.Position.East:
+                //    return tableSurface.transform.position + Vector3.right * magnitude;
+                //case Player.Position.West:
+                //    return tableSurface.transform.position - Vector3.right * magnitude;
             }
             return new Vector3();
         }
@@ -142,7 +150,7 @@ namespace Assets.Scripts.Game
         // Use this for initialization
         void Start()
         {
-            tableSurface = GameObject.Find("TableSurface");
+            Table = GetComponent<Table>();
             state = GetComponent<StateManager>();
         }
 
@@ -150,6 +158,67 @@ namespace Assets.Scripts.Game
         void Update()
         {
 
+        }
+
+        public Player GetNextPlayer(Player currentPlayer)
+        {
+            switch (CurrentNumPlayers)
+            {
+                case NumPlayers.Two:
+
+                    return players.Single(a => a.Index == 1 - currentPlayer.Index);
+                case NumPlayers.Four:
+                    int targetIndex;
+                    if (currentPlayer.Index == 3)
+                        targetIndex = 0;
+                    else
+                        targetIndex = currentPlayer.Index + 1;
+                    return players.Single(a => a.Index == targetIndex);
+                default:
+                    throw new Exception("error getting next player");
+            }
+        }
+
+        public void PassOnBid()
+        {
+            //nobody likes their cards (the next person to bid would've been the first person who bid)
+            if (GetNextPlayer(CurrentBidder) == GetPlayerToStartDealOn(CurrentRound.Number))
+            {
+                StartNewRound();
+            }
+
+            //
+            else
+                CurrentBidder = GetNextPlayer(CurrentBidder);
+
+        }
+
+        public void SetNewBid(int amount)
+        {
+            CurrentRound.UpdateCurrentBid(new BidInfo { Amount = amount, Holder = CurrentBidder });
+            if (amount == 100)
+            {
+                state.SetGameState(StateManager.GameState.Playing);
+            }
+            else
+                CurrentBidder = GetNextPlayer(CurrentBidder);
+        }
+
+
+        private Player GetPlayerToStartDealOn(int roundNum)
+        {
+            int dealToIndex;
+            switch (CurrentNumPlayers)
+            {
+                case NumPlayers.Two:
+                    return players.Single(a => a.Index == roundNum % 2);
+                    break;
+                case NumPlayers.Four:
+                    return players.Single(a => a.Index == roundNum % 4);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
     }
 }

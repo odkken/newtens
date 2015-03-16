@@ -7,14 +7,16 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{C1655375-1647-4E5D-D3B1-C94D4AD197B4}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>Assembly-CSharp</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile></CompilerResponseFile>
+    <CompilerResponseFile>
+    </CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.0.0f4</UnityVersion>
@@ -38,17 +40,10 @@
   <ItemGroup>
     <Reference Include="mscorlib" />
     <Reference Include="System" />
-    <Reference Include="System.XML" />
     <Reference Include="System.Core" />
-    <Reference Include="Boo.Lang" />
-    <Reference Include="UnityScript.Lang" />
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor">
-      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
@@ -56,6 +51,19 @@
   <ItemGroup>
     <Compile Include="Assets\BidButton.cs" />
     <Compile Include="Assets\BidPanel.cs" />
+    <Compile Include="Assets\Code\CommonInterfaces\ICard.cs" />
+    <Compile Include="Assets\Code\CommonInterfaces\ICardHolder.cs" />
+    <Compile Include="Assets\Code\CommonInterfaces\IDeck.cs" />
+    <Compile Include="Assets\Code\CommonInterfaces\IGame.cs" />
+    <Compile Include="Assets\Code\CommonInterfaces\IPlayer.cs" />
+    <Compile Include="Assets\Code\CommonInterfaces\IDealer.cs" />
+    <Compile Include="Assets\Code\CommonInterfaces\IRound.cs" />
+    <Compile Include="Assets\Code\Games\Common\Deck.cs" />
+    <Compile Include="Assets\Code\Games\Common\SimpleDealer.cs" />
+    <Compile Include="Assets\Code\Games\Tens\FourPlayerBot.cs" />
+    <Compile Include="Assets\Code\Games\Tens\HandCardHolder.cs" />
+    <Compile Include="Assets\Code\Games\Tens\TwoPlayerHuman.cs" />
+    <Compile Include="Assets\Code\Games\Tens\Round.cs" />
     <Compile Include="Assets\HostEntity.cs" />
     <Compile Include="Assets\Scripts\AvailableGame.cs" />
     <Compile Include="Assets\Scripts\BackButton.cs" />
@@ -63,21 +71,36 @@
     <Compile Include="Assets\Scripts\CardInfo.cs" />
     <Compile Include="Assets\Scripts\Cards\Card.cs" />
     <Compile Include="Assets\Scripts\Cards\Util.cs" />
-    <Compile Include="Assets\Scripts\Common\Util.cs" />
+    <Compile Include="Assets\Code\Util.cs" />
     <Compile Include="Assets\Scripts\Dealer.cs" />
     <Compile Include="Assets\Scripts\Game\BidInfo.cs" />
-    <Compile Include="Assets\Scripts\Game\GameRules.cs" />
     <Compile Include="Assets\Scripts\Game\Round.cs" />
     <Compile Include="Assets\Scripts\Game\StateManager.cs" />
+    <Compile Include="Assets\Scripts\Game\TensGameRules.cs" />
+    <Compile Include="Assets\Scripts\IGameRules.cs" />
     <Compile Include="Assets\Scripts\IPGetter.cs" />
+    <Compile Include="Assets\Scripts\IPlayer.cs" />
     <Compile Include="Assets\Scripts\ListExpander.cs" />
     <Compile Include="Assets\Scripts\MovablePanel.cs" />
     <Compile Include="Assets\Scripts\NetworkUI.cs" />
     <Compile Include="Assets\Scripts\PanelManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\TensCommon.cs" />
     <Compile Include="Assets\Scripts\TwoPlayerTable.cs" />
     <Compile Include="Assets\Table.cs" />
+    <Compile Include="Assets\Code\Games\Common\BaseCardHolder.cs" />
+    <Compile Include="Assets\Code\Games\Common\Definitions.cs" />
+    <Compile Include="Assets\Code\Games\Doda\BotPlayer.cs" />
+    <Compile Include="Assets\Code\Games\Doda\Card.cs" />
+    <Compile Include="Assets\Code\Games\Doda\Common.cs" />
+    <Compile Include="Assets\Code\Games\Doda\HumanPlayer.cs" />
+    <Compile Include="Assets\Code\Games\Tens\BasePlayer.cs" />
+    <Compile Include="Assets\Code\Games\Tens\TwoPlayerBot.cs" />
+    <Compile Include="Assets\Code\Games\Tens\Card.cs" />
+    <Compile Include="Assets\Code\Games\Tens\HumanPlayer.cs" />
+    <Compile Include="Assets\Code\Games\Tens\TableCardHolder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\Scripts\Common\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

@@ -1,17 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.Scripts;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using Debug = System.Diagnostics.Debug;
+using Random = System.Random;
 
-namespace Assets.Scripts.Common
+namespace Assets.Code
 {
     public static class Util
     {
-        private static System.Random _rand;
+        private static Random _rand;
+
+        public static Random Rand
+        {
+            get { return _rand ?? (_rand = new Random()); }
+        }
 
         public static void Shuffle<T>(this IList<T> list, int seed)
         {
-            var rng = new System.Random(seed);
+            var rng = new Random(seed);
             var n = list.Count;
             while (n > 1)
             {
@@ -41,6 +48,17 @@ namespace Assets.Scripts.Common
             theList[indexA] = theList[indexB];
             theList[indexB] = tmp;
         }
+        /// <summary>
+        /// Returns the loop-around value for the next index of a collection with size outOf
+        /// </summary>
+        public static int Next(int i, int outOf)
+        {
+            var next = i + 1;
+            Debug.Assert(next <= outOf, "Passed in " + i + " to next, out of " + outOf);
+            if (next == outOf)
+                next = 0;
+            return next;
+        }
 
         public static T Next<T>(this IList<T> theList, int currentIndex)
         {
@@ -49,10 +67,8 @@ namespace Assets.Scripts.Common
 
         public static float NextGaussian(float stdDev, float mean = 0)
         {
-            if (_rand == null)
-                _rand = new System.Random(); //reuse this if you are generating many
-            double u1 = _rand.NextDouble(); //these are uniform(0,1) random doubles
-            double u2 = _rand.NextDouble();
+            double u1 = Rand.NextDouble(); //these are uniform(0,1) random doubles
+            double u2 = Rand.NextDouble();
             double randStdNormal = Math.Sqrt(-2.0 * Math.Log(u1)) *
                          Math.Sin(2.0 * Math.PI * u2); //random normal(0,1)
             double randNormal =
@@ -68,7 +84,7 @@ namespace Assets.Scripts.Common
         public static Vector3 RelativeForward(Player.Position position)
         {
             var right = RelativeRight(position);
-            return new Vector3(-right.y, right.x, 0);
+            return new Vector3(-right.z, 0, right.x);
         }
 
         public static Vector3 RelativeRight(Player.Position position)
@@ -80,9 +96,9 @@ namespace Assets.Scripts.Common
                 case Player.Position.South:
                     return Vector3.right;
                 case Player.Position.East:
-                    return Vector3.up;
+                    return Vector3.forward;
                 case Player.Position.West:
-                    return Vector3.down;
+                    return Vector3.back;
                 default:
                     throw new ArgumentOutOfRangeException("position");
             }

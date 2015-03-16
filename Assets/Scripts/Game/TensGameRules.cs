@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Assets.Scripts.Common;
+using Assets.Scripts.Cards;
 using UnityEngine;
+using Util = Assets.Code.Util;
 
 namespace Assets.Scripts.Game
 {
-    public class GameRules : MonoBehaviour
+    public class TensGameRules : MonoBehaviour, IGameRules
     {
 
 
@@ -41,13 +42,13 @@ namespace Assets.Scripts.Game
             var playerPrefab = (GameObject)Resources.Load("Player");
             switch (CurrentNumPlayers)
             {
-                case GameRules.NumPlayers.Two:
+                case NumPlayers.Two:
                     var playerZero = (GameObject)Instantiate(playerPrefab);
                     SeatPlayer(playerZero.GetComponent<Player>());
                     var playerOne = (GameObject)Instantiate(playerPrefab);
                     SeatPlayer(playerOne.GetComponent<Player>());
                     break;
-                case GameRules.NumPlayers.Four:
+                case NumPlayers.Four:
                     for (var i = 0; i < 4; i++)
                     {
                         var player = (GameObject)Instantiate(playerPrefab);
@@ -93,6 +94,26 @@ namespace Assets.Scripts.Game
         }
 
 
+        public void StartGame(IEnumerable<Player> players)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CanBePlayed(Card card)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void PlayCard(Card card)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Player CurrentTurnPlayer()
+        {
+            throw new NotImplementedException();
+        }
+
         public void SeatPlayer(Player player)
         {
             switch (CurrentNumPlayers)
@@ -126,22 +147,17 @@ namespace Assets.Scripts.Game
             players.Add(player);
         }
 
+        public void DealNextCard(Card card)
+        {
+            throw new NotImplementedException();
+        }
+
         public Vector3 PositionLookup(Player.Position position)
         {
-            const float magnitude = 4f;
+            const float height = 2.771f;
+            const float depth = .381f;
 
-            switch (position)
-            {
-                //case Player.Position.North:
-                //    return tableSurface.transform.position + Vector3.up * magnitude;
-                //case Player.Position.South:
-                //    return tableSurface.transform.position - Vector3.up * magnitude;
-                //case Player.Position.East:
-                //    return tableSurface.transform.position + Vector3.right * magnitude;
-                //case Player.Position.West:
-                //    return tableSurface.transform.position - Vector3.right * magnitude;
-            }
-            return new Vector3();
+            return new Vector3(0, height, 0) - Util.RelativeForward(position) * depth;
         }
 
 

@@ -1,7 +1,5 @@
-﻿using System;
+﻿using Assets.Code;
 using Assets.Scripts;
-using Assets.Scripts.Common;
-using Assets.Scripts.Game;
 using UnityEngine;
 
 namespace Assets
@@ -12,18 +10,25 @@ namespace Assets
 
 
 
+        private float HandDistance = .639f;
+        private float HandHeight = 1.609f;
 
-
-        public float RowDistance = .4f;
+        private float RowDistance = .4f;
 
         public float Height { get { return collider.bounds.size.z; } }
 
-        public Vector3 PlayPosition { get { return new Vector3(transform.position.x, Height * 1.1f, transform.position.z); } }
+        public Vector3 PlayPosition { get { return new Vector3(transform.position.x, Height + .1f, transform.position.z); } }
 
         public Vector3 RowPosition(Player.Position seatPosition)
         {
             return PlayPosition - Util.RelativeForward(seatPosition) * RowDistance;
         }
+
+        public Vector3 HandPosition(Player.Position seatPosition)
+        {
+            return PlayPosition - Util.RelativeForward(seatPosition) * HandDistance + Vector3.up * (HandHeight - Height);
+        }
+
         // Use this for initialization
         void Start()
         {

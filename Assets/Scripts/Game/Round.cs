@@ -4,9 +4,9 @@ namespace Assets.Scripts.Game
 {
     public class Round
     {
-        private GameRules rules;
+        private TensGameRules rules;
         public readonly int Number;
-        public Round(GameRules rules, Player playerToStartDealOn, int roundNum)
+        public Round(TensGameRules rules, Player playerToStartDealOn, int roundNum)
         {
             this.rules = rules;
             PlayerToStartDealOn = playerToStartDealOn;

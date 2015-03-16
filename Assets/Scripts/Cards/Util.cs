@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using Assets.Code.Games.Common;
 using UnityEngine;
 
 namespace Assets.Scripts.Cards
 {
     public static class Util
     {
-        public static void SetInfo(GameObject card, TensCommon.CardRank rank, TensCommon.CardSuit suit)
+        public static void SetInfo(GameObject card, Definitions.CardRank rank, Definitions.CardSuit suit)
         {
             card.GetComponent<Card>().Info.Rank = rank;
             card.GetComponent<Card>().Info.Suit = suit;

@@ -1,10 +1,6 @@
 ﻿using System.Collections;
-using System.Diagnostics;
 using System.Linq;
-using System.Net;
-using System.Net.Sockets;
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
 namespace Assets.Scripts
 {

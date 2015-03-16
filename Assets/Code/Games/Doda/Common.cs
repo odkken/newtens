@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace Assets.Scripts
+﻿namespace Assets.Code.Games.Doda
 {
-    public static class TensCommon
+    static class Common
     {
         public enum CardSuit
         {
@@ -16,5 +11,6 @@ namespace Assets.Scripts
         {
             Five = 5, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Ace
         }
+
     }
 }

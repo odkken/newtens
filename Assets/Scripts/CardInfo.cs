@@ -1,13 +1,12 @@
 ﻿using System;
-using UnityEngine;
-
+using Assets.Code.Games.Common;
 namespace Assets.Scripts
 {
     [Serializable]
     public class CardInfo
     {
-        public TensCommon.CardRank Rank;
-        public TensCommon.CardSuit Suit;
+        public Definitions.CardRank Rank;
+        public Definitions.CardSuit Suit;
 
 
         void Start()

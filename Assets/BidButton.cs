@@ -7,7 +7,7 @@ namespace Assets
 {
     public class BidButton : MonoBehaviour
     {
-        private GameRules gameRules;
+        private TensGameRules tensGameRules;
         private int amount;
         public int Amount
         {
@@ -21,13 +21,13 @@ namespace Assets
                 decreaseButton.interactable = Amount != MinBidAmount;
             }
         }
-        private int MinBidAmount { get { return Math.Max(50, gameRules.CurrentRound.CurrentBid.Amount + 5); } }
+        private int MinBidAmount { get { return Math.Max(50, tensGameRules.CurrentRound.CurrentBid.Amount + 5); } }
         private Button increaseButton;
         private Button decreaseButton;
         // Use this for initialization
         void Start()
         {
-            gameRules = FindObjectOfType<GameRules>();
+            tensGameRules = FindObjectOfType<TensGameRules>();
             increaseButton = GameObject.Find("IncreaseBidButton").GetComponent<Button>();
             decreaseButton = GameObject.Find("DecreaseBidButton").GetComponent<Button>();
             Amount = MinBidAmount;
@@ -57,7 +57,7 @@ namespace Assets
 
         public void EnterBid()
         {
-            gameRules.SetNewBid(Amount);
+            tensGameRules.SetNewBid(Amount);
             Amount = MinBidAmount;
         }
     }

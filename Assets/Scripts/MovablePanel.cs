@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Assets.Code;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -42,7 +43,7 @@ namespace Assets.Scripts
             while (time < 1)
             {
                 time += Time.deltaTime / transitionTime;
-                var value = Scripts.Common.Util.CalculateBezierPoint(time, Vector2.zero, controlPoint, controlPoint, Vector2.one).y;
+                var value = Util.CalculateBezierPoint(time, Vector2.zero, controlPoint, controlPoint, Vector2.one).y;
                 rectTransform.localPosition = Vector3.Lerp(startPos, to, value);
                 yield return null;
             }

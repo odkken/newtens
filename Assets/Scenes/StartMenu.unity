@@ -25,7 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: .200000003, g: .200000003, b: .200000003, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 6e66df3be3af6de48876f29151c1b57c, type: 2}
   m_HaloStrength: .5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -175,7 +175,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 29217796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.09699988, z: 0}
+  m_LocalPosition: {x: 0, y: 2.45000005, z: 0}
   m_LocalScale: {x: 4.30353642, y: 4.30353832, z: 4.30353832}
   m_Children:
   - {fileID: 1186979381}
@@ -1853,7 +1853,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eede614ac8b96ca4e90ae8fc4e908385, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RowDistance: .400000006
 --- !u!1001 &475903256
 Prefab:
   m_ObjectHideFlags: 0
@@ -2112,7 +2111,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c888b4ab3089ff941b30c6762eb00bcf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c888b4ab3089ff941b30c6762eb00bcf, type: 3}
       propertyPath: m_LocalRotation.z
@@ -2120,11 +2119,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c888b4ab3089ff941b30c6762eb00bcf, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -1.62920685e-07
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: c888b4ab3089ff941b30c6762eb00bcf, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: c888b4ab3089ff941b30c6762eb00bcf, type: 3}
       propertyPath: m_Name
@@ -3817,7 +3816,7 @@ Transform:
   m_Children:
   - {fileID: 1220941699}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!114 &1057801412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4181,7 +4180,7 @@ GameObject:
   - 81: {fileID: 1262424918}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4797,8 +4796,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1441309718}
-  m_LocalRotation: {x: .500000298, y: 0, z: 0, w: .866025269}
-  m_LocalPosition: {x: 0, y: 2.53900003, z: -.800000012}
+  m_LocalRotation: {x: .642787695, y: 0, z: 0, w: .766044378}
+  m_LocalPosition: {x: 0, y: 2.77099991, z: -.381000012}
   m_LocalScale: {x: .378998935, y: .378998876, z: .378998876}
   m_Children:
   - {fileID: 1262424922}
@@ -4846,8 +4845,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72bc0c235a42def44875938ea97c5108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HorizontalTableSpacing: 1.5
-  HorizontalHandSpacing: 1
   Cards: []
 --- !u!1 &1450253270
 GameObject:

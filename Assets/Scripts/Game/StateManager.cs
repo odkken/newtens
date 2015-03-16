@@ -7,7 +7,7 @@ namespace Assets.Scripts.Game
     {
         public Dealer Dealer;
 
-        private GameRules gameRules;
+        private TensGameRules tensGameRules;
 
 
         public enum GameState
@@ -39,7 +39,7 @@ namespace Assets.Scripts.Game
         // Use this for initialization
         void Start()
         {
-            gameRules = GetComponent<GameRules>();
+            tensGameRules = GetComponent<TensGameRules>();
         }
 
 
@@ -68,7 +68,7 @@ namespace Assets.Scripts.Game
         public void StartGame()
         {
             Debug.Log("GameStarted");
-            gameRules.StartNewRound();
+            tensGameRules.StartNewRound();
             Dealer.InitializeDeck();
         }
     }

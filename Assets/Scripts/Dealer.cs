@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
-using Assets.Scripts.Cards;
-using Assets.Scripts.Common;
+using Assets.Code;
+using Assets.Code.Games.Common;
 using Assets.Scripts.Game;
-using UnityEditor;
 using UnityEngine;
 using Util = Assets.Scripts.Cards.Util;
 
@@ -18,12 +17,12 @@ namespace Assets.Scripts
 
 
         public GameObject bidPanel;
-        private GameRules _gameRules;
+        private TensGameRules tensGameRules;
 
         // Use this for initialization
         void Start()
         {
-            _gameRules = FindObjectOfType<GameRules>();
+            tensGameRules = FindObjectOfType<TensGameRules>();
         }
 
         // Update is called once per frame
@@ -34,11 +33,11 @@ namespace Assets.Scripts
 
         public void Deal()
         {
-            var playerToDealTo = _gameRules.CurrentRound.PlayerToStartDealOn;
+            var playerToDealTo = tensGameRules.CurrentRound.PlayerToStartDealOn;
             while (deck.Any())
             {
                 playerToDealTo.GiveCard(GetTopCard());
-                playerToDealTo = _gameRules.GetNextPlayer(playerToDealTo);
+                playerToDealTo = tensGameRules.GetNextPlayer(playerToDealTo);
             }
             bidPanel.SetActive(true);
         }
@@ -60,9 +59,9 @@ namespace Assets.Scripts
             }
 
             var cardNames = new List<CardInfo>();
-            foreach (TensCommon.CardSuit suit in Enum.GetValues(typeof(TensCommon.CardSuit)))
+            foreach (Definitions.CardSuit suit in Enum.GetValues(typeof(Definitions.CardSuit)))
             {
-                foreach (TensCommon.CardRank rank in Enum.GetValues(typeof(TensCommon.CardRank)))
+                foreach (Definitions.CardRank rank in Enum.GetValues(typeof(Definitions.CardRank)))
                 {
                     cardNames.Add(new CardInfo { Rank = rank, Suit = suit });
                 }
@@ -87,10 +86,10 @@ namespace Assets.Scripts
                 }
 
 
-                var soap = cardPrefab.transform.FindChild("Soap");
-                var collider = soap.GetComponent<BoxCollider>();
+                var collider = cardPrefab.GetComponent<BoxCollider>();
                 var cardThickness = collider.size.z / 2;
-                var cardObject = (GameObject)Instantiate(cardPrefab, _gameRules.Table.PlayPosition + new Vector3(0, cardThickness * (cardNames.Count - iz), 0), Quaternion.LookRotation(Vector3.down, Vector3.forward));
+                var upDir = Code.Util.Rand.NextDouble() > .5 ? Vector3.forward : Vector3.back;
+                var cardObject = (GameObject)Instantiate(cardPrefab, tensGameRules.Table.PlayPosition + new Vector3(0, cardThickness * (cardNames.Count - iz), 0), Quaternion.LookRotation(Vector3.down, upDir));
                 //cardObject.transform.SetParent(tableSurface.transform);
 
                 deck.Add(cardObject);

@@ -1,8 +1,10 @@
-﻿namespace Assets.Scripts.Game
+﻿using Assets.Code.CommonInterfaces;
+
+namespace Assets.Scripts.Game
 {
     public class BidInfo
     {
-        public Player Holder;
+        public IPlayer Holder;
         public int Amount = 0;
     }
 }

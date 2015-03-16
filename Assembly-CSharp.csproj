@@ -48,6 +48,7 @@
   <ItemGroup>
      <Compile Include="Assets\BidButton.cs" />
      <Compile Include="Assets\BidPanel.cs" />
+     <Compile Include="Assets\Code\AssetRepository.cs" />
      <Compile Include="Assets\Code\CommonInterfaces\ICard.cs" />
      <Compile Include="Assets\Code\CommonInterfaces\ICardHolder.cs" />
      <Compile Include="Assets\Code\CommonInterfaces\IDealer.cs" />
@@ -64,7 +65,7 @@
      <Compile Include="Assets\Code\Games\Doda\Common.cs" />
      <Compile Include="Assets\Code\Games\Doda\HumanPlayer.cs" />
      <Compile Include="Assets\Code\Games\Tens\BasePlayer.cs" />
-     <Compile Include="Assets\Code\Games\Tens\Card.cs" />
+     <Compile Include="Assets\Code\Games\Tens\Behaviors\CardBehavior.cs" />
      <Compile Include="Assets\Code\Games\Tens\FourPlayerBot.cs" />
      <Compile Include="Assets\Code\Games\Tens\HandCardHolder.cs" />
      <Compile Include="Assets\Code\Games\Tens\HumanPlayer.cs" />
@@ -85,9 +86,7 @@
      <Compile Include="Assets\Scripts\Game\Round.cs" />
      <Compile Include="Assets\Scripts\Game\StateManager.cs" />
      <Compile Include="Assets\Scripts\Game\TensGameRules.cs" />
-     <Compile Include="Assets\Scripts\IGameRules.cs" />
      <Compile Include="Assets\Scripts\IPGetter.cs" />
-     <Compile Include="Assets\Scripts\IPlayer.cs" />
      <Compile Include="Assets\Scripts\ListExpander.cs" />
      <Compile Include="Assets\Scripts\MovablePanel.cs" />
      <Compile Include="Assets\Scripts\NetworkUI.cs" />

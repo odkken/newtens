@@ -5,20 +5,20 @@ using System.Linq;
 using System.Text;
 using Assets.Code.CommonInterfaces;
 using Assets.Code.Games.Common;
+using Assets.Code.Games.Tens.Behaviors;
 using JetBrains.Annotations;
 
 namespace Assets.Code.Games.Tens
 {
     class Round : IRound
     {
-        private IDeck deck;
         private readonly List<IPlayer> players;
         private int currentTurnPlayerIndex;
-        public Round(IDeck deck, List<IPlayer> players, int dealerPlayerIndex)
+        public Round(List<IPlayer> players, int dealerPlayerIndex)
         {
             IsComplete = false;
 
-            this.deck = deck;
+            var deck = new Deck(new List<ICard> { new CardBehavior() });
             this.players = players;
             new SimpleDealer(players, Util.Next(dealerPlayerIndex, players.Count)).DealAllCards(deck);
             currentTurnPlayerIndex = Util.Next(dealerPlayerIndex, players.Count);

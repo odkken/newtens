@@ -19,15 +19,15 @@ namespace Assets
 
         public Vector3 PlayPosition { get { return new Vector3(transform.position.x, Height + .1f, transform.position.z); } }
 
-        public Vector3 RowPosition(Player.Position seatPosition)
-        {
-            return PlayPosition - Util.RelativeForward(seatPosition) * RowDistance;
-        }
+        //public Vector3 RowPosition(ipl.Position seatPosition)
+        //{
+        //    return PlayPosition - Util.RelativeForward(seatPosition) * RowDistance;
+        //}
 
-        public Vector3 HandPosition(Player.Position seatPosition)
-        {
-            return PlayPosition - Util.RelativeForward(seatPosition) * HandDistance + Vector3.up * (HandHeight - Height);
-        }
+        //public Vector3 HandPosition(Player.Position seatPosition)
+        //{
+        //    return PlayPosition - Util.RelativeForward(seatPosition) * HandDistance + Vector3.up * (HandHeight - Height);
+        //}
 
         // Use this for initialization
         void Start()

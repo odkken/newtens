@@ -3,6 +3,9 @@ using Assets.Code.CommonInterfaces;
 
 namespace Assets.Code.Games.Common
 {
+    /// <summary>
+    /// This dealer just loops through all the players you give it when dealing
+    /// </summary>
     class SimpleDealer : IDealer
     {
         private int playerIndexToDealTo;

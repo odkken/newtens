@@ -1262,7 +1262,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 68100478}
   m_Direction: 2
   m_Value: 0
-  m_Size: .99999994
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1829,7 +1829,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c617291c88b0b24ca45f979530d885a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dealer: {fileID: 154827537}
 --- !u!114 &455000186
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1842,6 +1841,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Table: {fileID: 0}
+  state: {fileID: 0}
+  players: []
+  <CurrentNumPlayers>k__BackingField: 0
+  <CurrentBidder>k__BackingField: {fileID: 0}
 --- !u!114 &455000187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4846,6 +4849,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cards: []
+  tensGameRules: {fileID: 0}
+  <Index>k__BackingField: 0
+  <SeatPosition>k__BackingField: 0
 --- !u!1 &1450253270
 GameObject:
   m_ObjectHideFlags: 0

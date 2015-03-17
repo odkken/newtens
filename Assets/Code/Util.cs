@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Assets.Code.CommonInterfaces;
 using Assets.Scripts;
 using UnityEngine;
 using Debug = System.Diagnostics.Debug;
@@ -28,6 +29,19 @@ namespace Assets.Code
                 list[k] = list[n];
                 list[n] = value;
             }
+        }
+
+        public static int CompareCards(ICard a, ICard b)
+        {
+            if (a.Suit > b.Suit)
+                return 1;
+            if (a.Suit < b.Suit)
+                return -1;
+            if (a.Rank > b.Rank)
+                return 1;
+            if (a.Rank < b.Rank)
+                return -1;
+            return 0;
         }
 
         public static T Pop<T>(this IList<T> theList)

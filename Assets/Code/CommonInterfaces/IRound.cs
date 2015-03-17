@@ -1,6 +1,6 @@
 ﻿namespace Assets.Code.CommonInterfaces
 {
-    interface IRound
+    public interface IRound
     {
         IPlayer CurrentTurnPlayer { get; }
         //IPlayer LastTurnPlayer { get; }
@@ -8,6 +8,7 @@
         bool IsComplete { get; }
         bool IsPlayersTurn(IPlayer player);
         int Score(IPlayer player);
+        bool IsPlayable(ICard card);
         void PlayCard(IPlayer player, ICard card);
     }
 

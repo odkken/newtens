@@ -8,5 +8,6 @@ namespace Assets.Code.CommonInterfaces
         IEnumerable<ICard> Cards { get; }
         void AddCard(ICard card);
         ICard RemoveCard(ICard card);
+        void Rearrange();
     }
 }

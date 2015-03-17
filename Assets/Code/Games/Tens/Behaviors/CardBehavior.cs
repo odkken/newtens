@@ -9,13 +9,10 @@ namespace Assets.Code.Games.Tens.Behaviors
 {
     public class CardBehavior : MonoBehaviour, ICard
     {
-      
+
         public Definitions.CardSuit Suit { get; private set; }
         public Definitions.CardRank Rank { get; private set; }
-        public IPlayer Owner
-        {
-            get { throw new NotImplementedException(); }
-        }
+        public IPlayer Owner { get; set; }
 
         private Coroutine scalingCoroutine;
 
@@ -52,7 +49,7 @@ namespace Assets.Code.Games.Tens.Behaviors
             });
         }
 
-        private Queue<MoveInfo> movementQueue = new Queue<MoveInfo>();
+        private readonly Queue<MoveInfo> movementQueue = new Queue<MoveInfo>();
 
 
         public void ScaleTo(Vector3 scale)

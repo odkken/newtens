@@ -104,7 +104,7 @@ namespace Assets.Scripts.Game
     //        throw new NotImplementedException();
     //    }
 
-    //    public void PlayCard(Card card)
+    //    public void PickCardToPlay(Card card)
     //    {
     //        throw new NotImplementedException();
     //    }

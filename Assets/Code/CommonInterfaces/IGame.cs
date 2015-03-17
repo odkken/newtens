@@ -2,11 +2,8 @@
 
 namespace Assets.Code.CommonInterfaces
 {
-    interface IGame
+    public interface IGame
     {
-        IEnumerable<IPlayer> AllPlayers { get; }
-        IEnumerable<IRound> AllRounds { get; }
-        IRound CurrentRound { get; }
         void StartNewGame();
     }
 }

@@ -60,7 +60,7 @@ namespace Assets.Scripts
     //    }
 
 
-    //    public void PlayCard(Card card)
+    //    public void PickCardToPlay(Card card)
     //    {
     //        if (!Cards.Contains(card))
     //            throw new Exception("Tried to play a card not owned by me: " + card.Info.Rank + "of" + card.Info.Suit + ".  Owner is player" + card.Owner.Index);

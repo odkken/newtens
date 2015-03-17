@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Assets.Code.CommonInterfaces
+﻿namespace Assets.Code.CommonInterfaces
 {
     interface IDealer
     {

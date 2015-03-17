@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Assets.Code.CommonInterfaces;
-using Assets.Scripts;
 using UnityEngine;
 using Debug = System.Diagnostics.Debug;
 using Random = System.Random;

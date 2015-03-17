@@ -1,7 +1,4 @@
-﻿using System;
-using Assets.Scripts.Game;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 namespace Assets
 {

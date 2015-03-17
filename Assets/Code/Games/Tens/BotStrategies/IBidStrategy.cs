@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using Assets.Code.CommonInterfaces;
 
 namespace Assets.Code.Games.Tens.BotStrategies

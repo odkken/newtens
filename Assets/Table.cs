@@ -1,6 +1,4 @@
-﻿using Assets.Code;
-using Assets.Scripts;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets
 {

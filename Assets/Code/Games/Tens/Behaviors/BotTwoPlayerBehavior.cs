@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Assets.Code.CommonInterfaces;
 using Assets.Code.Games.Tens.BotStrategies;
 
 namespace Assets.Code.Games.Tens.Behaviors

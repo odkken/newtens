@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Code.Games.Common;
+
 namespace Assets.Scripts
 {
     [Serializable]

@@ -22,7 +22,7 @@ namespace Assets
         //    return PlayPosition - Util.RelativeForward(seatPosition) * RowDistance;
         //}
 
-        //public Vector3 HandPosition(Player.Position seatPosition)
+        //public Vector3 HandPosition(PlayerBehavior.Position seatPosition)
         //{
         //    return PlayPosition - Util.RelativeForward(seatPosition) * HandDistance + Vector3.up * (HandHeight - Height);
         //}

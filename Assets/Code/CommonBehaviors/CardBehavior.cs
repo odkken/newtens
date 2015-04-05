@@ -4,7 +4,7 @@ using Assets.Code.CommonInterfaces;
 using Assets.Code.Games.Common;
 using UnityEngine;
 
-namespace Assets.Code.Games.Tens.Behaviors
+namespace Assets.Code.CommonBehaviors
 {
     public class CardBehavior : MonoBehaviour, ICard
     {

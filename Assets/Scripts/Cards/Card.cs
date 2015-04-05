@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using Assets.Code.Games.Common;
-using UnityEngine;
-
-namespace Assets.Scripts.Cards
+﻿namespace Assets.Scripts.Cards
 {
     //public class Card : MonoBehaviour
     //{
@@ -48,7 +41,7 @@ namespace Assets.Scripts.Cards
     //    /// Indicates the player to whom the card belongs if it has not been played.
     //    /// If it has been played, the owner indicates the winner of the card.
     //    /// </summary>
-    //    public Player Owner;
+    //    public PlayerBehavior Owner;
 
     //    // Use this for initialization
     //    void Start()
@@ -95,7 +88,7 @@ namespace Assets.Scripts.Cards
     //    }
 
 
-    //    public void Take(Player player, PlayState state)
+    //    public void Take(PlayerBehavior player, PlayState state)
     //    {
     //        if (CurrentState != PlayState.InDeck)
     //        {

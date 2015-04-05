@@ -59,6 +59,12 @@
     <Compile Include="Assets\BidButton.cs" />
     <Compile Include="Assets\BidPanel.cs" />
     <Compile Include="Assets\Code\AssetRepository.cs" />
+    <Compile Include="Assets\Code\CommonBehaviors\CardBehavior.cs" />
+    <Compile Include="Assets\Code\CommonBehaviors\GameCreator.cs" />
+    <Compile Include="Assets\Code\CommonBehaviors\Networking\HostBehavior.cs" />
+    <Compile Include="Assets\Code\CommonBehaviors\PlayerBehavior.cs" />
+    <Compile Include="Assets\Code\CommonBehaviors\Table.cs" />
+    <Compile Include="Assets\Code\CommonBehaviors\TableBehavior.cs" />
     <Compile Include="Assets\Code\CommonInterfaces\ICard.cs" />
     <Compile Include="Assets\Code\CommonInterfaces\ICardHolder.cs" />
     <Compile Include="Assets\Code\CommonInterfaces\IDealer.cs" />
@@ -66,32 +72,36 @@
     <Compile Include="Assets\Code\CommonInterfaces\IGame.cs" />
     <Compile Include="Assets\Code\CommonInterfaces\IPlayer.cs" />
     <Compile Include="Assets\Code\CommonInterfaces\IRound.cs" />
+    <Compile Include="Assets\Code\CommonInterfaces\Networking\IClient.cs" />
+    <Compile Include="Assets\Code\CommonInterfaces\Networking\IHost.cs" />
+    <Compile Include="Assets\Code\CommonInterfaces\Networking\PlayerManager.cs" />
     <Compile Include="Assets\Code\Games\Common\BaseCardHolderBehavior.cs" />
     <Compile Include="Assets\Code\Games\Common\Deck.cs" />
     <Compile Include="Assets\Code\Games\Common\Definitions.cs" />
     <Compile Include="Assets\Code\Games\Common\SimpleDealer.cs" />
     <Compile Include="Assets\Code\Games\Common\SortedCardHolder.cs" />
+    <Compile Include="Assets\Code\Games\HighCardDraw\HighCardDrawGame.cs" />
+    <Compile Include="Assets\Code\Games\HighCardDraw\Round.cs" />
     <Compile Include="Assets\Code\Games\Tens\Behaviors\BasePlayerBehavior.cs" />
     <Compile Include="Assets\Code\Games\Tens\Behaviors\BotTwoPlayerBehavior.cs" />
-    <Compile Include="Assets\Code\Games\Tens\Behaviors\CardBehavior.cs" />
     <Compile Include="Assets\Code\Games\Tens\Behaviors\FourPlayerBehaviorHuman.cs" />
     <Compile Include="Assets\Code\Games\Tens\Behaviors\FourPlayerBotBehavior.cs" />
     <Compile Include="Assets\Code\Games\Tens\Behaviors\HandCardHolderBehavior.cs" />
     <Compile Include="Assets\Code\Games\Tens\Behaviors\HumanTwoPlayerBehavior.cs" />
     <Compile Include="Assets\Code\Games\Tens\Behaviors\TableCardHolderBehavior.cs" />
     <Compile Include="Assets\Code\Games\Tens\Behaviors\TwoPlayerBehavior.cs" />
+    <Compile Include="Assets\Code\Games\Tens\BidInfo.cs" />
     <Compile Include="Assets\Code\Games\Tens\BotStrategies\IBidStrategy.cs" />
     <Compile Include="Assets\Code\Games\Tens\BotStrategies\IPlayCardStrategy.cs" />
     <Compile Include="Assets\Code\Games\Tens\BotStrategies\SimpleBidStrategy.cs" />
     <Compile Include="Assets\Code\Games\Tens\BotStrategies\SimplePlayCardStrategy.cs" />
-    <Compile Include="Assets\Code\Games\Tens\Game\BidInfo.cs" />
-    <Compile Include="Assets\Code\Games\Tens\Game\Game.cs" />
-    <Compile Include="Assets\Code\Games\Tens\Game\ITensGame.cs" />
-    <Compile Include="Assets\Code\Games\Tens\Game\ITensRound.cs" />
-    <Compile Include="Assets\Code\Games\Tens\Game\Misc.cs" />
-    <Compile Include="Assets\Code\Games\Tens\Game\Round.cs" />
+    <Compile Include="Assets\Code\Games\Tens\ITensGame.cs" />
+    <Compile Include="Assets\Code\Games\Tens\ITensRound.cs" />
+    <Compile Include="Assets\Code\Games\Tens\Misc.cs" />
+    <Compile Include="Assets\Code\Games\Tens\Round.cs" />
+    <Compile Include="Assets\Code\Games\Tens\TensGame.cs" />
     <Compile Include="Assets\Code\Util.cs" />
-    <Compile Include="Assets\HostEntity.cs" />
+    <Compile Include="Assets\ComboBox.cs" />
     <Compile Include="Assets\Scripts\AvailableGame.cs" />
     <Compile Include="Assets\Scripts\BackButton.cs" />
     <Compile Include="Assets\Scripts\CanvasManager.cs" />
@@ -110,7 +120,8 @@
     <Compile Include="Assets\Scripts\PanelManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\TwoPlayerTable.cs" />
-    <Compile Include="Assets\Table.cs" />
+    <Compile Include="Assets\Code\CommonBehaviors\Networking\ServerGetterBehavior.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

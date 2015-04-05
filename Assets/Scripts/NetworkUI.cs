@@ -78,21 +78,11 @@ namespace Assets.Scripts
 
         public void LaunchServer()
         {
-            Network.InitializeServer(8, 25005, true);
-            MasterServer.RegisterHost("soup", "soup", "soup");
             GameObject.Find("UICamera").GetComponent<Camera>().enabled = false;
             GameObject.Find("GameCamera").GetComponent<Camera>().enabled = true;
         }
 
-        void OnPlayerConnected(NetworkPlayer player)
-        {
-            Network.Instantiate(Resources.Load("Dealer"), Vector3.zero, Quaternion.identity, 0);
-        }
 
-        void OnServerInitialized()
-        {
-            Debug.Log("Server initialized");
-        }
 
         public void JoinRandom()
         {
@@ -131,16 +121,6 @@ namespace Assets.Scripts
             Debug.Log("Requesting host list");
         }
 
-        void OnMasterServerEvent(MasterServerEvent msevent)
-        {
-            switch (msevent)
-            {
-                case MasterServerEvent.HostListReceived:
-                    // received the host list, no longer awaiting results
-                    Debug.Log("Received host list, gg");
-                    loading = false;
-                    break;
-            }
-        }
+        
     }
 }

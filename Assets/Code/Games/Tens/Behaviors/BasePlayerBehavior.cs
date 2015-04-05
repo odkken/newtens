@@ -14,6 +14,11 @@ namespace Assets.Code.Games.Tens.Behaviors
         public abstract void SetTurnActive();
         public abstract void GiveCard(ICard card);
 
+        public bool ReadyToPlay
+        {
+            get { return true; }
+        }
+
         public virtual void Seat(IGame game, Vector3 pos, Quaternion lookRot)
         {
             Debug.Assert(game.GetType() == typeof(ITensGame), "Tried to seat a tens player at a non tens game!");

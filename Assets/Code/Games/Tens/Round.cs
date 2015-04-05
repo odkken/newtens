@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Assets.Code.CommonBehaviors;
 using Assets.Code.CommonInterfaces;
 using Assets.Code.Games.Common;
-using Assets.Code.Games.Tens.Behaviors;
 
 namespace Assets.Code.Games.Tens.Game
 {
@@ -91,8 +91,8 @@ namespace Assets.Code.Games.Tens.Game
         private void AssertPlayersTurn(IPlayer player)
         {
             var playerIndex = players.IndexOf(player);
-            Debug.Assert(playerIndex == currentTurnPlayerIndex, "Player " + playerIndex + " tried to play out of turn!  It's player " + currentTurnPlayerIndex + "'s turn.");
-            Debug.Assert(player == CurrentTurnPlayer, "Player " + player + " tried to play out of turn!  It's player " + CurrentTurnPlayer + "'s turn.");
+            Debug.Assert(playerIndex == currentTurnPlayerIndex, "PlayerBehavior " + playerIndex + " tried to play out of turn!  It's player " + currentTurnPlayerIndex + "'s turn.");
+            Debug.Assert(player == CurrentTurnPlayer, "PlayerBehavior " + player + " tried to play out of turn!  It's player " + CurrentTurnPlayer + "'s turn.");
 
         }
     }

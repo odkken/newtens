@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Assets.Code;
-using Assets.Scripts.Cards;
-using Assets.Scripts.Game;
-using UnityEngine;
-using Util = Assets.Code.Util;
-
-namespace Assets.Scripts
+﻿namespace Assets.Scripts
 {
-    //public class Player : MonoBehaviour
+    //public class PlayerBehavior : MonoBehaviour
     //{
     //    private readonly float HorizontalTableSpacing = .2f;
     //    private readonly float HorizontalHandSpacing = .05f;

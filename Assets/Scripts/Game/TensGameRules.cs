@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Assets.Scripts.Cards;
-using UnityEngine;
-using Util = Assets.Code.Util;
-
-namespace Assets.Scripts.Game
+﻿namespace Assets.Scripts.Game
 {
     //public class TensGameRules : MonoBehaviour, IGameRules
     //{
@@ -32,27 +25,27 @@ namespace Assets.Scripts.Game
     //        }
     //    }
 
-    //    public Player GetFirstPlayer()
+    //    public PlayerBehavior GetFirstPlayer()
     //    {
     //        return players[0];
     //    }
 
     //    public void StartNewRound()
     //    {
-    //        var playerPrefab = (GameObject)Resources.Load("Player");
+    //        var playerPrefab = (GameObject)Resources.Load("PlayerBehavior");
     //        switch (CurrentNumPlayers)
     //        {
     //            case NumPlayers.Two:
     //                var playerZero = (GameObject)Instantiate(playerPrefab);
-    //                SeatPlayer(playerZero.GetComponent<Player>());
+    //                SeatPlayer(playerZero.GetComponent<PlayerBehavior>());
     //                var playerOne = (GameObject)Instantiate(playerPrefab);
-    //                SeatPlayer(playerOne.GetComponent<Player>());
+    //                SeatPlayer(playerOne.GetComponent<PlayerBehavior>());
     //                break;
     //            case NumPlayers.Four:
     //                for (var i = 0; i < 4; i++)
     //                {
     //                    var player = (GameObject)Instantiate(playerPrefab);
-    //                    SeatPlayer(player.GetComponent<Player>());
+    //                    SeatPlayer(player.GetComponent<PlayerBehavior>());
     //                }
     //                break;
     //        }
@@ -83,18 +76,18 @@ namespace Assets.Scripts.Game
     //        }
     //    }
 
-    //    public Player CurrentBidder { get; private set; }
-    //    public Player BidHolder { get { return CurrentRound.CurrentBid.Holder; } }
+    //    public PlayerBehavior CurrentBidder { get; private set; }
+    //    public PlayerBehavior BidHolder { get { return CurrentRound.CurrentBid.Holder; } }
 
-    //    private List<Player> players = new List<Player>();
+    //    private List<PlayerBehavior> players = new List<PlayerBehavior>();
 
-    //    public Player GetPlayerByIndex(int index)
+    //    public PlayerBehavior GetPlayerByIndex(int index)
     //    {
     //        return players.Single(a => a.Index == index);
     //    }
 
 
-    //    public void StartGame(IEnumerable<Player> players)
+    //    public void StartGame(IEnumerable<PlayerBehavior> players)
     //    {
     //        throw new NotImplementedException();
     //    }
@@ -109,35 +102,35 @@ namespace Assets.Scripts.Game
     //        throw new NotImplementedException();
     //    }
 
-    //    public Player CurrentTurnPlayer()
+    //    public PlayerBehavior CurrentTurnPlayer()
     //    {
     //        throw new NotImplementedException();
     //    }
 
-    //    public void SeatPlayer(Player player)
+    //    public void SeatPlayer(PlayerBehavior player)
     //    {
     //        switch (CurrentNumPlayers)
     //        {
     //            case NumPlayers.Two:
     //                if (!players.Any())
-    //                    player.Initialize(0, Player.Position.South);
+    //                    player.Initialize(0, PlayerBehavior.Position.South);
     //                else
-    //                    player.Initialize(1, Player.Position.North);
+    //                    player.Initialize(1, PlayerBehavior.Position.North);
     //                break;
     //            case NumPlayers.Four:
     //                switch (players.Count())
     //                {
     //                    case 0:
-    //                        player.Initialize(0, Player.Position.South);
+    //                        player.Initialize(0, PlayerBehavior.Position.South);
     //                        break;
     //                    case 1:
-    //                        player.Initialize(1, Player.Position.West);
+    //                        player.Initialize(1, PlayerBehavior.Position.West);
     //                        break;
     //                    case 2:
-    //                        player.Initialize(2, Player.Position.North);
+    //                        player.Initialize(2, PlayerBehavior.Position.North);
     //                        break;
     //                    case 3:
-    //                        player.Initialize(3, Player.Position.East);
+    //                        player.Initialize(3, PlayerBehavior.Position.East);
     //                        break;
     //                }
     //                break;
@@ -152,7 +145,7 @@ namespace Assets.Scripts.Game
     //        throw new NotImplementedException();
     //    }
 
-    //    public Vector3 PositionLookup(Player.Position position)
+    //    public Vector3 PositionLookup(PlayerBehavior.Position position)
     //    {
     //        const float height = 2.771f;
     //        const float depth = .381f;
@@ -176,7 +169,7 @@ namespace Assets.Scripts.Game
 
     //    }
 
-    //    public Player GetNextPlayer(Player currentPlayer)
+    //    public PlayerBehavior GetNextPlayer(PlayerBehavior currentPlayer)
     //    {
     //        switch (CurrentNumPlayers)
     //        {
@@ -221,7 +214,7 @@ namespace Assets.Scripts.Game
     //    }
 
 
-    //    private Player GetPlayerToStartDealOn(int roundNum)
+    //    private PlayerBehavior GetPlayerToStartDealOn(int roundNum)
     //    {
     //        int dealToIndex;
     //        switch (CurrentNumPlayers)

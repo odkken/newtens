@@ -4,7 +4,7 @@ using Assets.Code.CommonInterfaces;
 
 namespace Assets.Code.Games.Tens.Game
 {
-    public class Game : ITensGame
+    public class TensGame : ITensGame
     {
         private readonly List<IPlayer> players;
 
@@ -24,6 +24,11 @@ namespace Assets.Code.Games.Tens.Game
         }
 
         public void StartNewGame()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void StartNewGame(IEnumerable<IPlayer> players)
         {
             throw new NotImplementedException();
         }

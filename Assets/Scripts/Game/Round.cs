@@ -1,12 +1,10 @@
-﻿using UnityEngine;
-
-namespace Assets.Scripts.Game
+﻿namespace Assets.Scripts.Game
 {
     //public class Round
     //{
     //    private TensGameRules rules;
     //    public readonly int Number;
-    //    public Round(TensGameRules rules, Player playerToStartDealOn, int roundNum)
+    //    public Round(TensGameRules rules, PlayerBehavior playerToStartDealOn, int roundNum)
     //    {
     //        this.rules = rules;
     //        PlayerToStartDealOn = playerToStartDealOn;
@@ -22,6 +20,6 @@ namespace Assets.Scripts.Game
     //        Debug.Log("New bid entered by player " + CurrentBid.Holder.Index + ": " + CurrentBid.Amount);
     //    }
 
-    //    public Player PlayerToStartDealOn { get; private set; }
+    //    public PlayerBehavior PlayerToStartDealOn { get; private set; }
     //}
 }

@@ -94,23 +94,23 @@ namespace Assets.Code
             return Mathf.Pow((1 - t), 3) * p0 + 3 * Mathf.Pow((1 - t), 2) * t * p1 + 3 * (1 - t) * t * t * p2 + t * t * t * p3;
         }
 
-        //public static Vector3 RelativeForward(Player.Position position)
+        //public static Vector3 RelativeForward(PlayerBehavior.Position position)
         //{
         //    var right = RelativeRight(position);
         //    return new Vector3(-right.z, 0, right.x);
         //}
 
-        //public static Vector3 RelativeRight(Player.Position position)
+        //public static Vector3 RelativeRight(PlayerBehavior.Position position)
         //{
         //    switch (position)
         //    {
-        //        case Player.Position.North:
+        //        case PlayerBehavior.Position.North:
         //            return Vector3.left;
-        //        case Player.Position.South:
+        //        case PlayerBehavior.Position.South:
         //            return Vector3.right;
-        //        case Player.Position.East:
+        //        case PlayerBehavior.Position.East:
         //            return Vector3.forward;
-        //        case Player.Position.West:
+        //        case PlayerBehavior.Position.West:
         //            return Vector3.back;
         //        default:
         //            throw new ArgumentOutOfRangeException("position");

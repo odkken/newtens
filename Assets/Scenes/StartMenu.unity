@@ -1840,11 +1840,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d00f3e4be720cc4aa8bb01a371f191d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Table: {fileID: 0}
-  state: {fileID: 0}
-  players: []
-  <CurrentNumPlayers>k__BackingField: 0
-  <CurrentBidder>k__BackingField: {fileID: 0}
 --- !u!114 &455000187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4848,10 +4843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72bc0c235a42def44875938ea97c5108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cards: []
-  tensGameRules: {fileID: 0}
-  <Index>k__BackingField: 0
-  <SeatPosition>k__BackingField: 0
 --- !u!1 &1450253270
 GameObject:
   m_ObjectHideFlags: 0

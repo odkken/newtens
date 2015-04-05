@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using Assets.Code;
-using Assets.Code.Games.Common;
-using Assets.Scripts.Game;
-using UnityEngine;
-using Util = Assets.Scripts.Cards.Util;
+﻿using UnityEngine;
 
 namespace Assets.Scripts
 {
